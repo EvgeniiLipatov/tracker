@@ -1,0 +1,131 @@
+[
+{
+  "model": "webapp.task",
+  "pk": 1,
+  "fields": {
+    "brief": "Delete",
+    "description": "Add delete function for task",
+    "status": 1,
+    "type": 1,
+    "created_at": "2019-09-27T07:51:31.709Z"
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 2,
+  "fields": {
+    "brief": "Update task",
+    "description": "Add update option for task",
+    "status": 2,
+    "type": 1,
+    "created_at": "2019-09-27T07:52:33.016Z"
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 3,
+  "fields": {
+    "brief": "edit button on main page",
+    "description": "Add edit button on main page",
+    "status": 2,
+    "type": 3,
+    "created_at": "2019-09-27T07:53:27.163Z"
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 4,
+  "fields": {
+    "brief": "add bootstrap support",
+    "description": "Add bootstrap styles in templates",
+    "status": 3,
+    "type": 3,
+    "created_at": "2019-09-27T07:54:16.566Z"
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 5,
+  "fields": {
+    "brief": "Fix view of task",
+    "description": "Delete ability to view paused tasks",
+    "status": 1,
+    "type": 2,
+    "created_at": "2019-09-27T07:55:10.735Z"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 1,
+  "fields": {
+    "name": "new"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 2,
+  "fields": {
+    "name": "in progress"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 3,
+  "fields": {
+    "name": "done"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 4,
+  "fields": {
+    "name": "paused"
+  }
+},
+{
+  "model": "webapp.type",
+  "pk": 1,
+  "fields": {
+    "name": "task"
+  }
+},
+{
+  "model": "webapp.type",
+  "pk": 2,
+  "fields": {
+    "name": "bug"
+  }
+},
+{
+  "model": "webapp.type",
+  "pk": 3,
+  "fields": {
+    "name": "feature"
+  }
+},
+{
+  "model": "webapp.type",
+  "pk": 4,
+  "fields": {
+    "name": "enhancement"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$vSKe9i2vsCIn$56swyexgB+EfhjfanSKwc5EQgbRRFaGnBpRcjSrCkoQ=",
+    "last_login": "2019-09-27T07:42:38.883Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2019-09-27T04:26:40.236Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
