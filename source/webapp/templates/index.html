@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+    <li><a href="{% url 'create_task' %}">Create Task</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1>Tasks:</h1>
+    <hr/>
+    {% for task in tasks %}
+        <h2>{{ task.brief }}</h2>
+        <p>
+            description {{ task.brief }}; status {{ task.status }}; type {{ task.type }}; Created {{ task.created_at|date:'d.m.Y H:i:s' }}
+        <p>
+            <a href="{% url 'task_view' task.pk %}">View...</a>
+            <a href="{% url 'update_task' task.pk %}">Edit</a>
+            <a href="{% url 'delete_task' task.pk %}">Delete</a>
+        </p>
+        <hr/>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ task }}{% endblock %}
+
+{% block menu %}
+
+    <li><a href="#">Edit</a></li>
+
+{% endblock %}
+
+{% block content %}
+
+    <table style="width: 100%">
+        <tr>
+            <th>
+                Description
+            </th>
+            <th>
+                 task status
+            </th>
+            <th>
+                type of task
+            </th>
+        </tr>
+        <tr>
+            <td>
+                {{ task.description }}
+            </td>
+            <td>
+                 {{ task.status }}
+            </td>
+            <td>
+                {{ task.type }}
+            </td>
+        </tr>
+    </table>
+{% endblock %}
