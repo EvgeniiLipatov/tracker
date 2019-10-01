@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Status{% endblock %}
+
+{% block menu %}
+
+    <li><a href="{% url 'status_view' %}">View</a></li>
+
+{% endblock %}
+
+{% block content %}
+
+    {% include 'partial/delete_templ.html' with item=status url='status_delete' %}
+
+{% endblock %}

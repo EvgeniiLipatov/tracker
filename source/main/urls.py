@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from webapp.views import IndexView, TaskView, Task_create_view, Task_edit_view, Task_delete_view
+from webapp.views import IndexView, TaskView, Task_create_view, Task_edit_view, Task_delete_view, StatusView,TypeView, \
+    Status_create_view, Type_create_view, Status_delete_view, Type_delete_view, Status_edit_view, Type_edit_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,5 +24,14 @@ urlpatterns = [
     path('task/<int:pk>/', TaskView.as_view(), name='task_view'),
     path('task/create/', Task_create_view.as_view(), name='create_task'),
     path('task/delete/<int:pk>/', Task_delete_view.as_view(), name='delete_task'),
-    path('task/update/<int:pk>/', Task_edit_view.as_view(), name='update_task')
+    path('task/update/<int:pk>/', Task_edit_view.as_view(), name='update_task'),
+    path('status/', StatusView.as_view(), name='status_view'),
+    path('type/', TypeView.as_view(), name='type_view'),
+    path('status/add', Status_create_view.as_view(), name='create_status'),
+    path('type/add', Type_create_view.as_view(), name='create_type'),
+    path('status/delete/<int:pk>/', Status_delete_view.as_view(), name='delete_status'),
+    path('type/delete/<int:pk>/', Type_delete_view.as_view(), name='delete_type'),
+    path('status/update/<int:pk>/', Status_edit_view.as_view(), name='status_update'),
+    path('type/update/<int:pk>/', Type_edit_view.as_view(), name='type_update'),
+
 ]

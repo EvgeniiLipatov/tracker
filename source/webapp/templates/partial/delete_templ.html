@@ -1,0 +1,13 @@
+
+<h1>Are you sure want to delete "{{ item }}"?</h1>
+
+    <form method="POST" {% if url == 'status_delete' %} action="{% url "delete_status" status.pk %}" \
+     {% elif url == 'type_delete' %}action="{% url "delete_type" type.pk %}"{% endif %}class="text-center">
+
+        {% csrf_token %}
+
+        <p><input type="submit" value="Confirm"></p>
+        <p><a {% if url == 'status_delete' %} href="{% url "status_view" %}" {% elif url == 'type_delete' %}\
+            href="{% url "type_view" %}" {% endif %}>Cancel</a></p>
+
+    </form>
