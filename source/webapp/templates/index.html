@@ -7,6 +7,9 @@
 {% block content %}
     <h1>Tasks:</h1>
     <hr/>
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
     {% for task in tasks %}
         <h2>{{ task.brief }}</h2>
         <p>
@@ -18,4 +21,7 @@
         </p>
         <hr/>
     {% endfor %}
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
 {% endblock %}

@@ -10,6 +10,8 @@ class IndexView(ListView):
     template_name = 'index.html'
     model = Task
     context_object_name = 'tasks'
+    paginate_by = 2
+    paginate_orphans = 1
 
 
 class TaskView(BaseView):

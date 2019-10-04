@@ -75,3 +75,42 @@ table, tr, th, td {
     border: solid 1px red;
     box-shadow: red 0 0 3px;
 }
+
+
+.pagination {
+    text-align: center;
+}
+
+.pagination a, .page-disabled, .page-active {
+    display: inline-block;
+    border: solid 1px #6a7ddd;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 3px;
+}
+
+.pagination a {
+    background: #6a7ddd;
+    color: white;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background: #6a7dff;
+    text-decoration: underline;
+}
+
+.page-disabled {
+    background: #6a7dcc;
+    color: #dddddd
+}
+
+.page-input {
+    font-size: 16px;
+    width: 50px;
+    text-align: center;
+}
+
+.page-active {
+    background: #ffc122;
+}
