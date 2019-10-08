@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from webapp.models import Type
 from webapp.forms import TypeForm
 
@@ -9,7 +10,7 @@ class TypeView(ListView):
     model = Type
     context_object_name = 'types'
 
-class Type_create_view(View):
+'''class Type_create_view(View):
     def get(self, request, *args, **kwargs):
         form = TypeForm()
         return render(request, 'create_type.html', context={'form': form})
@@ -22,7 +23,14 @@ class Type_create_view(View):
             )
             return redirect('type_view')
         else:
-            return render(request, 'create_type.html', context={'form': form})
+            return render(request, 'create_type.html', context={'form': form})'''
+
+class Type_create_view(CreateView):
+    template_name = "create_type.html"
+    model = Type
+    form_class = TypeForm
+    def get_success_url(self):
+        return reverse('type_view')
 
 class Type_edit_view(View):
     def get(self, request, *args, **kwargs):

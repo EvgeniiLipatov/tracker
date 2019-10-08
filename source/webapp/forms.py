@@ -1,20 +1,23 @@
 from django import  forms
 from django.forms import widgets
-from webapp.models import Status
-from webapp.models import Type
+from webapp.models import Type, Task, Status
 
-class TaskForm(forms.Form):
 
-    brief = forms.CharField(max_length=100, required=True, label='Brief description')
-    description = forms.CharField(max_length=3000, required=True, label='Description',widget=widgets.Textarea)
-    status = forms.ModelChoiceField(queryset=Status.objects.all(), required=False, label='Status',empty_label=None)
-    type = forms.ModelChoiceField(queryset=Type.objects.all(), required=False, label='Type', empty_label=None)
+class StatusForm(forms.ModelForm):
+    class Meta:
+        model = Status
+        fields = ['name']
 
-class StatusForm(forms.Form):
-    name = forms.CharField(max_length=20, required=True, label='Status')
+class TypeForm(forms.ModelForm):
+    class Meta:
+        model = Type
+        fields = ['name']
 
-class TypeForm(forms.Form):
-    name = forms.CharField(max_length=20, required=True, label='Type')
+
+class TaskForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ['brief', 'description', 'status', 'type']
 
 
 
