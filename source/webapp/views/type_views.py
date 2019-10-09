@@ -4,7 +4,7 @@ from django.views import View
 from django.views.generic import ListView, CreateView
 from webapp.models import Type
 from webapp.forms import TypeForm
-from webapp.views.base_views import DeleteBaseView
+from webapp.views.base_views import DeleteBaseView, UpdateView
 
 
 class TypeView(ListView):
@@ -34,38 +34,33 @@ class Type_create_view(CreateView):
     def get_success_url(self):
         return reverse('type_view')
 
-class Type_edit_view(View):
-    def get(self, request, *args, **kwargs):
-        type = get_object_or_404(Type, pk=kwargs['pk'])
-        form = TypeForm(data={
-            'name': type.name
-        })
-        return render(request, 'update_type.html', context={
-            'form': form,
-            'type': type
-        })
+# class Type_edit_view(View):
+#     def get(self, request, *args, **kwargs):
+#         type = get_object_or_404(Type, pk=kwargs['pk'])
+#         form = TypeForm(data={
+#             'name': type.name
+#         })
+#         return render(request, 'update_type.html', context={
+#             'form': form,
+#             'type': type
+#         })
+#
+#     def post(self, request, *args, **kwargs):
+#         type = get_object_or_404(Type, pk=kwargs['pk'])
+#         form = TypeForm(data=request.POST)
+#         if form.is_valid():
+#             type.name = form.cleaned_data['name']
+#             type.save()
+#             return redirect('type_view')
+#         else:
+#             return render(request, 'update_type.html', context={'form': form})
 
-    def post(self, request, *args, **kwargs):
-        type = get_object_or_404(Type, pk=kwargs['pk'])
-        form = TypeForm(data=request.POST)
-        if form.is_valid():
-            type.name = form.cleaned_data['name']
-            type.save()
-            return redirect('type_view')
-        else:
-            return render(request, 'update_type.html', context={'form': form})
-
-'''class Type_delete_view(View):
-    def get(self, request, *args, **kwargs):
-        type = get_object_or_404(Type, pk=kwargs['pk'])
-        return render(request, 'delete_type.html', context={
-            'type': type
-        })
-
-    def post(self, request, *args, **kwargs):
-        type = get_object_or_404(Type, pk=kwargs['pk'])
-        type.delete()
-        return redirect('type_view')'''
+class Type_edit_view(UpdateView):
+    form_class = TypeForm
+    template_name = "update_type.html"
+    model = Type
+    context_key = 'type'
+    redirect_url = 'type_view'
 
 class Type_delete_view(DeleteBaseView):
     confirm = True
