@@ -1,11 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import View
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from webapp.models import Status
 from webapp.forms import StatusForm
-from webapp.views.base_views import DeleteBaseView, UpdateView
-
 
 class StatusView(ListView):
     template_name = 'status.html'
@@ -13,61 +11,25 @@ class StatusView(ListView):
     context_object_name = 'statuses'
 
 
-''' class Status_create_view(View):
-    def get(self, request, *args, **kwargs):
-        form = StatusForm()
-        return render(request, 'create_status.html', context={'form': form})
-
-    def post(self, request, *args, **kwargs):
-        form = StatusForm(data=request.POST)
-        if form.is_valid():
-            status = Status.objects.create(
-                name=form.cleaned_data['name']
-            )
-            return redirect('status_view')
-        else:
-            return render(request, 'create_status.html', context={'form': form}) '''
-
 class Status_create_view(CreateView):
     template_name = "create_status.html"
     model = Status
     form_class = StatusForm
+
     def get_success_url(self):
         return reverse('status_view')
 
-# class Status_edit_view(View):
-#     def get(self, request, *args, **kwargs):
-#         status = get_object_or_404(Status, pk=kwargs['pk'])
-#         form = StatusForm(data={
-#             'name': status.name
-#         })
-#         return render(request, 'update_status.html', context={
-#             'form': form,
-#             'status': status
-#         })
-#
-#     def post(self, request, *args, **kwargs):
-#         status = get_object_or_404(Status, pk=kwargs['pk'])
-#         form = StatusForm(data=request.POST)
-#         if form.is_valid():
-#             status.name = form.cleaned_data['name']
-#             status.save()
-#             return redirect('status_view')
-#         else:
-#             return render(request, 'update_status.html', context={'form': form})
 
 class Status_edit_view(UpdateView):
     form_class = StatusForm
     template_name = "update_status.html"
     model = Status
-    context_key = 'status'
-    redirect_url = 'status_view'
+    context_object_name = 'status'
+    success_url = reverse_lazy('status_view')
 
 
-class Status_delete_view(DeleteBaseView):
-    Confirm = False
+class Status_delete_view(DeleteView):
     template_name = 'delete_status.html'
     model = Status
-    context_key = 'status'
-    key = 'pk'
-    redirect_url = 'status_view'
+    context_object_name = 'status'
+    success_url = reverse_lazy('status_view')
