@@ -28,7 +28,7 @@ class Type(models.Model):
 
 
 class Project(models.Model):
-    project_name = models.TextField(max_length=70, null=True, blank=True, verbose_name='Project name')
+    project_name = models.CharField(max_length=70, null=True, blank=True, verbose_name='Project name')
     description = models.TextField(max_length=3000, null=True, blank=True, verbose_name='Description')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creation Time')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Updating time')
