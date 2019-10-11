@@ -15,23 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from webapp.views import IndexView, TaskView, Task_create_view, Task_edit_view, Task_delete_view, StatusView,TypeView, \
-    Status_create_view, Type_create_view, Status_delete_view, Type_delete_view, Status_edit_view, Type_edit_view
+from webapp.views import IndexView, TaskView, TaskCreateView, TaskEditView, TaskDeleteView, StatusView,TypeView, \
+    StatusCreateView, TypeCreateView, StatusDeleteView, TypeDeleteView, StatusEditView, TypeEditView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
     path('task/<int:pk>/', TaskView.as_view(), name='task_view'),
-    path('task/create/', Task_create_view.as_view(), name='create_task'),
-    path('task/delete/<int:pk>/', Task_delete_view.as_view(), name='delete_task'),
-    path('task/update/<int:pk>/', Task_edit_view.as_view(), name='update_task'),
+    path('task/create/', TaskCreateView.as_view(), name='create_task'),
+    path('task/delete/<int:pk>/', TaskDeleteView.as_view(), name='delete_task'),
+    path('task/update/<int:pk>/', TaskEditView.as_view(), name='update_task'),
     path('status/', StatusView.as_view(), name='status_view'),
     path('type/', TypeView.as_view(), name='type_view'),
-    path('status/add', Status_create_view.as_view(), name='create_status'),
-    path('type/add', Type_create_view.as_view(), name='create_type'),
-    path('status/delete/<int:pk>/', Status_delete_view.as_view(), name='delete_status'),
-    path('type/delete/<int:pk>/', Type_delete_view.as_view(), name='delete_type'),
-    path('status/update/<int:pk>/', Status_edit_view.as_view(), name='status_update'),
-    path('type/update/<int:pk>/', Type_edit_view.as_view(), name='type_update'),
+    path('status/add', StatusCreateView.as_view(), name='create_status'),
+    path('type/add', TypeCreateView.as_view(), name='create_type'),
+    path('status/delete/<int:pk>/', StatusDeleteView.as_view(), name='delete_status'),
+    path('type/delete/<int:pk>/', TypeDeleteView.as_view(), name='delete_type'),
+    path('status/update/<int:pk>/', StatusEditView.as_view(), name='status_update'),
+    path('type/update/<int:pk>/', TypeEditView.as_view(), name='type_update'),
 
 ]

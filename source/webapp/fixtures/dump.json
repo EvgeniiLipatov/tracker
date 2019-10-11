@@ -1,46 +1,50 @@
 [
 {
   "model": "webapp.task",
-  "pk": 2,
-  "fields": {
-    "brief": "Update task",
-    "description": "Add update option for task",
-    "status": 4,
-    "type": 1,
-    "created_at": "2019-09-27T07:52:33.016Z"
-  }
-},
-{
-  "model": "webapp.task",
-  "pk": 3,
-  "fields": {
-    "brief": "edit button on main page",
-    "description": "Add edit button on main page",
-    "status": 2,
-    "type": 3,
-    "created_at": "2019-09-27T07:53:27.163Z"
-  }
-},
-{
-  "model": "webapp.task",
-  "pk": 4,
-  "fields": {
-    "brief": "add bootstrap support",
-    "description": "Add bootstrap styles in templates",
-    "status": 3,
-    "type": 3,
-    "created_at": "2019-09-27T07:54:16.566Z"
-  }
-},
-{
-  "model": "webapp.task",
   "pk": 5,
   "fields": {
     "brief": "Fix view of task",
     "description": "Delete ability to view paused tasks",
-    "status": 1,
+    "status": 4,
     "type": 2,
+    "project": null,
     "created_at": "2019-09-27T07:55:10.735Z"
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 6,
+  "fields": {
+    "brief": "new_task_to_delete",
+    "description": "just for test",
+    "status": 4,
+    "type": 2,
+    "project": null,
+    "created_at": "2019-10-10T00:56:23.392Z"
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 7,
+  "fields": {
+    "brief": "new_task_to_delete",
+    "description": "just for test",
+    "status": 4,
+    "type": 2,
+    "project": null,
+    "created_at": "2019-10-10T00:58:53.513Z"
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 10,
+  "fields": {
+    "brief": "add bootstrap support",
+    "description": "bootstrap",
+    "status": 2,
+    "type": 4,
+    "project": null,
+    "created_at": "2019-10-10T01:34:45.635Z"
   }
 },
 {

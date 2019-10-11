@@ -12,22 +12,24 @@ class TypeView(ListView):
     context_object_name = 'types'
 
 
-class Type_create_view(CreateView):
+class TypeCreateView(CreateView):
     template_name = "create_type.html"
     model = Type
     form_class = TypeForm
+
     def get_success_url(self):
         return reverse('type_view')
 
 
-class Type_edit_view(UpdateView):
+class TypeEditView(UpdateView):
     form_class = TypeForm
     template_name = "update_type.html"
     model = Type
     context_object_name = 'type'
     success_url = reverse_lazy('type_view')
 
-class Type_delete_view(DeleteView):
+
+class TypeDeleteView(DeleteView):
     template_name = 'delete_type.html'
     model = Type
     context_object_name = 'type'
