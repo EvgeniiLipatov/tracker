@@ -21,8 +21,9 @@ class BaseView(TemplateView):
         pk = self.kwargs.get(self.key)
         return get_object_or_404(self.model, pk=pk)
 
+
 class DeleteBaseView(View):
-    Confirm =True
+    Confirm = True
     template_name = None
     model = None
     context_key = 'object'
@@ -61,6 +62,7 @@ class UpdateView(View):
     model = None
     key_kwarg = 'pk'
     context_key = 'object'
+
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
         form = self.form_class(initial=self.get_form_initial())
@@ -101,5 +103,6 @@ class UpdateView(View):
             'form': form,
             self.context_key: self.object
         }
+
     def get_redirect_url(self):
         return self.redirect_url

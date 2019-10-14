@@ -6,7 +6,7 @@ class Task(models.Model):
     description = models.TextField(max_length=3000, null=True, blank=True, verbose_name='Description')
     status = models.ForeignKey('Status', on_delete=models.PROTECT)
     type = models.ForeignKey('Type', on_delete=models.PROTECT)
-    project = models.ForeignKey('Project', null=True, on_delete=models.CASCADE)
+    project = models.ForeignKey('Project', null=True, related_name='tasks', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creation Time')
 
 

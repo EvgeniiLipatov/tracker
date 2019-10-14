@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ Project }}{% endblock %}
+
+{% block menu %}
+
+    <li><a href="{% url "update_project" project.pk %}">Edit</a></li>
+
+{% endblock %}
+
+{% block content %}
+
+    <table style="width: 100%">
+        <tr>
+            <th>
+                Description
+            </th>
+            <th>
+                 project create date
+            </th>
+            <th>
+                project update day
+            </th>
+        </tr>
+        <tr>
+            <td>
+                {{ project.description }}
+            </td>
+            <td>
+                 {{ project.created_at }}
+            </td>
+            <td>
+                {{ project.updated_at }}
+            </td>
+        </tr>
+    </table>
+     <h3>Tasks:</h3>
+    {% for task in tasks %}
+        <div>
+            <p>{{ task.brief}} created at {{ task.created_at|date:'d.m.Y H:i:s' }}</p>
+    {% empty %}
+        <p>No Tasks yet.</p>
+    {% endfor %}
+{% endblock %}
