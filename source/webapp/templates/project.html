@@ -5,6 +5,7 @@
 {% block menu %}
 
     <li><a href="{% url "update_project" project.pk %}">Edit</a></li>
+    <li><a href="{% url "create_task" %}">Create task</a></li>
 
 {% endblock %}
 
@@ -37,7 +38,7 @@
      <h3>Tasks:</h3>
     {% for task in tasks %}
         <div>
-            <p>{{ task.brief}} created at {{ task.created_at|date:'d.m.Y H:i:s' }}</p>
+              <a href="{% url 'update_task' task.pk %}"><p>{{ task.brief}} created at {{ task.created_at|date:'d.m.Y H:i:s' }}</p> </a>
     {% empty %}
         <p>No Tasks yet.</p>
     {% endfor %}

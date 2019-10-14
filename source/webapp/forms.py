@@ -18,12 +18,24 @@ class TypeForm(forms.ModelForm):
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = ['brief', 'description', 'status', 'type']
+        fields = ['brief', 'description', 'status', 'type', 'project']
 
 
 class ProjectForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ProjectForm, self).__init__(*args, **kwargs)
+
+        for key in self.fields:
+            self.fields[key].required = True
+
+    class Meta:
+        model = Project
+        fields = ['project_name', 'description']
+
+
+class ProjectTaskForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(ProjectTaskForm, self).__init__(*args, **kwargs)
 
         for key in self.fields:
             self.fields[key].required = True
