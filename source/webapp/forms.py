@@ -34,12 +34,7 @@ class ProjectForm(forms.ModelForm):
 
 
 class ProjectTaskForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super(ProjectTaskForm, self).__init__(*args, **kwargs)
-
-        for key in self.fields:
-            self.fields[key].required = True
 
     class Meta:
-        model = Project
-        fields = ['project_name', 'description']
+        model = Task
+        fields = ['brief', 'description', 'status', 'type']

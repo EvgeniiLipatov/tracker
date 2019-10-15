@@ -34,7 +34,6 @@ class TaskForProjectsCreateView(CreateView):
     model = Task
     template_name = 'create.html'
     form_class = ProjectTaskForm
-
     def form_valid(self, form):
         project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
         task = project.tasks.create(**form.cleaned_data)
