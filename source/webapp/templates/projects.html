@@ -6,10 +6,11 @@
 
 {% block content %}
     <h1>Projects:</h1>
-    <hr/>
+    {% include 'partial/simple_search.html' %}
     {% if is_paginated %}
         {% include 'partial/pagination.html' %}
     {% endif %}
+    <hr/>
     {% for project in projects %}
         <h2>{{ project.project_name }}</h2>
         <p>

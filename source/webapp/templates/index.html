@@ -6,10 +6,13 @@
 
 {% block content %}
     <h1>Tasks:</h1>
-    <hr/>
+    {% include 'partial/simple_search.html' %}
     {% if is_paginated %}
         {% include 'partial/pagination.html' %}
     {% endif %}
+
+    <hr/>
+
     {% for task in tasks %}
         <h2>{{ task.brief }}</h2>
         <p>
