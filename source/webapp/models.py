@@ -8,7 +8,7 @@ class Task(models.Model):
     type = models.ForeignKey('Type', on_delete=models.PROTECT)
     project = models.ForeignKey('Project', null=True, related_name='tasks', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creation Time')
-
+    updated_at =  models.DateTimeField(auto_now=True, verbose_name='Update Time')
 
 class Status(models.Model):
     name = models.CharField(max_length=20, verbose_name='Status')
