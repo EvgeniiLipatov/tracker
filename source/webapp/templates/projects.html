@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block menu %}
-    <li><a href="{% url 'create_project' %}">Create Project</a></li>
+    <li><a href="{% url 'webapp:create_project' %}">Create Project</a></li>
 {% endblock %}
 
 {% block content %}
@@ -16,9 +16,9 @@
         <p>
             description {{ project.description }};  Created {{ project.created_at|date:'d.m.Y H:i:s' }}
         <p>
-            <a href="{% url 'project_view' project.pk %}">View...</a>
-            <a href="{% url 'update_project' project.pk %}">Edit</a>
-            <a href="{% url 'delete_project' project.pk %}">Delete</a>
+            <a href="{% url 'webapp:project_view' project.pk %}">View...</a>
+            <a href="{% url 'webapp:update_project' project.pk %}">Edit</a>
+            <a href="{% url 'webapp:delete_project' project.pk %}">Delete</a>
         </p>
         <hr/>
     {% endfor %}

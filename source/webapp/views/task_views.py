@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
@@ -7,7 +8,6 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from webapp.models import Task, Project
 from webapp.forms import TaskForm, ProjectTaskForm, SimpleSearchForm
 from .base_views import BaseView
-
 
 
 class IndexView(ListView):
@@ -46,41 +46,44 @@ class IndexView(ListView):
             return self.form.cleaned_data['search']
         return None
 
+
 class TaskView(BaseView):
     template_name = 'task.html'
     model = Task
     context_key = 'task'
 
 
-class TaskCreateView(CreateView):
+class TaskCreateView(LoginRequiredMixin, CreateView):
     template_name = "create.html"
     model = Task
     form_class = TaskForm
 
     def get_success_url(self):
-        return reverse('task_view', kwargs={'pk': self.object.pk})
+        return reverse('webapp:task_view', kwargs={'pk': self.object.pk})
 
-class TaskForProjectsCreateView(CreateView):
+
+class TaskForProjectsCreateView(LoginRequiredMixin, CreateView):
     model = Task
     template_name = 'create.html'
     form_class = ProjectTaskForm
+
     def form_valid(self, form):
         project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
         task = project.tasks.create(**form.cleaned_data)
-        return redirect('project_view', pk=task.project.pk)
+        return redirect('webapp:project_view', pk=task.project.pk)
 
 
-class TaskEditView(UpdateView):
+class TaskEditView(LoginRequiredMixin, UpdateView):
     form_class = TaskForm
     template_name = "update.html"
     model = Task
     context_object_name = 'task'
 
     def get_success_url(self):
-        return reverse('task_view', kwargs={'pk': self.object.pk})
+        return reverse('webapp:task_view', kwargs={'pk': self.object.pk})
 
 
-class TaskDeleteView(DeleteView):
+class TaskDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'delete.html'
     model = Task
     context_object_name = 'task'
@@ -89,9 +92,4 @@ class TaskDeleteView(DeleteView):
         return self.delete(request, *args, **kwargs)
 
     def get_success_url(self):
-        return reverse('index')
-
-
-
-
-
+        return reverse('webapp:index')

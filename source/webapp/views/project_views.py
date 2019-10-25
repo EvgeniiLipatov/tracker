@@ -61,7 +61,7 @@ class ProjectCreateView(CreateView):
     form_class = ProjectForm
 
     def get_success_url(self):
-        return reverse('project_view', kwargs={'pk': self.object.pk})
+        return reverse('webapp:project_view', kwargs={'pk': self.object.pk})
 
 
 class ProjectEditView(UpdateView):
@@ -71,7 +71,7 @@ class ProjectEditView(UpdateView):
     context_object_name = 'project'
 
     def get_success_url(self):
-        return reverse('project_view', kwargs={'pk': self.object.pk})
+        return reverse('webapp:project_view', kwargs={'pk': self.object.pk})
 
 
 class ProjectDeleteView(DeleteView):
@@ -80,4 +80,4 @@ class ProjectDeleteView(DeleteView):
     context_object_name = 'project'
 
     def get_success_url(self):
-        return reverse('view_projects')
+        return reverse('webapp:view_projects')

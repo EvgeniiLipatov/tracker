@@ -17,7 +17,7 @@ def login_view(request):
 
             login(request, user)
 
-            return redirect('index')
+            return redirect('webapp:index')
 
         else:
 
@@ -28,4 +28,4 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('index')
+    return redirect('webapp:index')

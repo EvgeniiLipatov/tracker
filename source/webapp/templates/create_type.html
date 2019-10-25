@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1>Add Type</h1>
-    <form method="POST" action="{% url 'create_type' %}">
+    <form method="POST" action="{% url 'webapp:create_type' %}">
         {% include 'partial/task_form.html' with button_text="Create" %}
     </form>
 {% endblock %}

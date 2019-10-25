@@ -18,7 +18,7 @@ class TypeCreateView(CreateView):
     form_class = TypeForm
 
     def get_success_url(self):
-        return reverse('type_view')
+        return reverse('webapp:type_view')
 
 
 class TypeEditView(UpdateView):
@@ -26,11 +26,11 @@ class TypeEditView(UpdateView):
     template_name = "update_type.html"
     model = Type
     context_object_name = 'type'
-    success_url = reverse_lazy('type_view')
+    success_url = reverse_lazy('webapp:type_view')
 
 
 class TypeDeleteView(DeleteView):
     template_name = 'delete_type.html'
     model = Type
     context_object_name = 'type'
-    success_url = reverse_lazy('type_view')
+    success_url = reverse_lazy('webapp:type_view')

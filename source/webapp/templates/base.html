@@ -15,10 +15,16 @@
 <nav class="navbar">
     <div class="container">
         <ul class="menu">
-             <li><a href="{% url 'index' %}">Home</a></li>
-             <li><a href="{% url 'view_projects' %}">Projects</a></li>
-             <li><a href="{% url 'status_view' %}">Status list</a></li>
-             <li><a href="{% url 'type_view' %}">Types list</a></li>
+             <li><a href="{% url 'webapp:index' %}">Home</a></li>
+             <li><a href="{% url 'webapp:view_projects' %}">Projects</a></li>
+             <li><a href="{% url 'webapp:status_view' %}">Status list</a></li>
+             <li><a href="{% url 'webapp:type_view' %}">Types list</a></li>
+            {% if request.user.is_authenticated %}
+                <li>Привет, {{ user }}!</li>
+                <li><a href="{% url 'accounts:logout' %}">Log Out</a></li>
+            {% else %}
+                <li><a href="{% url 'accounts:login' %}">Log In</a></li>
+            {% endif %}
             {% block menu %}{% endblock %}
         </ul>
     </div>

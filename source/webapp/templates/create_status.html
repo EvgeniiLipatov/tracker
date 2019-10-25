@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1>Add Status</h1>
-    <form method="POST" action="{% url 'create_status' %}">
+    <form method="POST" action="{% url 'webapp:create_status' %}">
         {% include 'partial/task_form.html' with button_text="Create" %}
     </form>
 {% endblock %}

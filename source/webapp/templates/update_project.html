@@ -4,7 +4,7 @@
 
 {% block menu %}
 
-    <li><a href="{% url 'project_view' project.pk %}">view</a></li>
+    <li><a href="{% url 'webapp:project_view' project.pk %}">view</a></li>
 
 {% endblock %}
 
@@ -12,7 +12,7 @@
 
     <h1>Update Project</h1>
 
-    <form method="POST" action="{% url "update_project" project.pk %}">
+    <form method="POST" action="{% url "webapp:update_project" project.pk %}">
                  {% include 'partial/task_form.html' with button_text="update" %}
 
     </form>

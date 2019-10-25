@@ -4,7 +4,7 @@
 
 {% block menu %}
 
-    <li><a href="{% url 'task_view' task.pk %}">View</a></li>
+    <li><a href="{% url 'webapp:task_view' task.pk %}">View</a></li>
 
 {% endblock %}
 
@@ -12,13 +12,13 @@
 
     <h1>Are you sure want to delete task "{{ task.brief }}"?</h1>
 
-    <form method="POST" action="{% url "delete_task" task.pk %}" class="text-center">
+    <form method="POST" action="{% url "webapp:delete_task" task.pk %}" class="text-center">
 
         {% csrf_token %}
 
         <p><input type="submit" value="Confirm"></p>
 
-        <p><a href="{% url "task_view" task.pk %}">Cancel</a></p>
+        <p><a href="{% url "webapp:task_view" task.pk %}">Cancel</a></p>
 
     </form>
 

@@ -18,7 +18,7 @@ class StatusCreateView(CreateView):
     form_class = StatusForm
 
     def get_success_url(self):
-        return reverse('status_view')
+        return reverse('webapp:status_view')
 
 
 class StatusEditView(UpdateView):
@@ -26,11 +26,11 @@ class StatusEditView(UpdateView):
     template_name = "update_status.html"
     model = Status
     context_object_name = 'status'
-    success_url = reverse_lazy('status_view')
+    success_url = reverse_lazy('webapp:status_view')
 
 
 class StatusDeleteView(DeleteView):
     template_name = 'delete_status.html'
     model = Status
     context_object_name = 'status'
-    success_url = reverse_lazy('status_view')
+    success_url = reverse_lazy('webapp:status_view')
