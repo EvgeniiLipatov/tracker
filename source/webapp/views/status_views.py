@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.views import View
@@ -12,7 +13,7 @@ class StatusView(ListView):
     context_object_name = 'statuses'
 
 
-class StatusCreateView(CreateView):
+class StatusCreateView(LoginRequiredMixin, CreateView):
     template_name = "create_status.html"
     model = Status
     form_class = StatusForm
@@ -21,7 +22,7 @@ class StatusCreateView(CreateView):
         return reverse('webapp:status_view')
 
 
-class StatusEditView(UpdateView):
+class StatusEditView(LoginRequiredMixin, UpdateView):
     form_class = StatusForm
     template_name = "update_status.html"
     model = Status
@@ -29,7 +30,7 @@ class StatusEditView(UpdateView):
     success_url = reverse_lazy('webapp:status_view')
 
 
-class StatusDeleteView(DeleteView):
+class StatusDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'delete_status.html'
     model = Status
     context_object_name = 'status'
