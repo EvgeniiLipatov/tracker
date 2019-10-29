@@ -1,54 +1,54 @@
 [
 {
   "model": "webapp.task",
-  "pk": 2,
+  "pk": 6,
   "fields": {
-    "brief": "Update task",
-    "description": "Add update option for task",
-    "status": 3,
-    "type": 1,
-    "project": 1,
-    "created_at": "2019-09-27T07:52:33.016Z",
-    "updated_at": "2019-10-16T13:36:02.928Z"
-  }
-},
-{
-  "model": "webapp.task",
-  "pk": 3,
-  "fields": {
-    "brief": "edit button on main page",
-    "description": "Add edit button on main page",
-    "status": 2,
-    "type": 3,
-    "project": null,
-    "created_at": "2019-09-27T07:53:27.163Z",
-    "updated_at": "2019-10-16T13:28:15.007Z"
-  }
-},
-{
-  "model": "webapp.task",
-  "pk": 4,
-  "fields": {
-    "brief": "add bootstrap support",
-    "description": "Add bootstrap styles in templates",
-    "status": 3,
-    "type": 3,
-    "project": null,
-    "created_at": "2019-09-27T07:54:16.566Z",
-    "updated_at": "2019-10-16T13:28:15.007Z"
-  }
-},
-{
-  "model": "webapp.task",
-  "pk": 5,
-  "fields": {
-    "brief": "Fix view of task",
-    "description": "Delete ability to view paused tasks",
-    "status": 1,
+    "brief": "new_task_to_delete",
+    "description": "just for test",
+    "status": 4,
     "type": 2,
-    "project": 1,
-    "created_at": "2019-09-27T07:55:10.735Z",
-    "updated_at": "2019-10-16T13:28:15.007Z"
+    "project": null,
+    "created_at": "2019-10-10T00:56:23.392Z",
+    "updated_at": "2019-10-23T16:26:17.237Z"
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 7,
+  "fields": {
+    "brief": "new_task_to_delete",
+    "description": "just for test",
+    "status": 4,
+    "type": 2,
+    "project": 2,
+    "created_at": "2019-10-10T00:58:53.513Z",
+    "updated_at": "2019-10-23T16:26:17.237Z"
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 11,
+  "fields": {
+    "brief": "tert",
+    "description": "terr",
+    "status": 4,
+    "type": 4,
+    "project": null,
+    "created_at": "2019-10-13T10:47:44.095Z",
+    "updated_at": "2019-10-23T16:26:17.237Z"
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 12,
+  "fields": {
+    "brief": "ttt",
+    "description": "ttt",
+    "status": 4,
+    "type": 3,
+    "project": null,
+    "created_at": "2019-10-13T10:48:05.437Z",
+    "updated_at": "2019-10-23T16:26:17.237Z"
   }
 },
 {
@@ -109,22 +109,12 @@
 },
 {
   "model": "webapp.project",
-  "pk": 1,
-  "fields": {
-    "project_name": "tracker",
-    "description": "create new tracker",
-    "created_at": "2019-10-14T13:08:04.845Z",
-    "updated_at": "2019-10-14T13:08:04.845Z"
-  }
-},
-{
-  "model": "webapp.project",
   "pk": 2,
   "fields": {
-    "project_name": "tetris",
-    "description": "cool game",
-    "created_at": "2019-10-14T13:18:01.643Z",
-    "updated_at": "2019-10-14T13:18:01.643Z"
+    "project_name": "Tracker",
+    "description": "Create modern tracker very fast",
+    "created_at": "2019-10-13T10:46:47.076Z",
+    "updated_at": "2019-10-14T00:43:26.502Z"
   }
 },
 {
@@ -132,7 +122,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$150000$vSKe9i2vsCIn$56swyexgB+EfhjfanSKwc5EQgbRRFaGnBpRcjSrCkoQ=",
-    "last_login": "2019-10-25T12:00:27.431Z",
+    "last_login": "2019-10-29T01:22:55.233Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
@@ -141,6 +131,78 @@
     "is_staff": true,
     "is_active": true,
     "date_joined": "2019-09-27T04:26:40.236Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$lAOZb94Opxcu$miv6jrzqTSNNZbo7JeUwUQCh9WMA7Qyv2fY2sAkFviE=",
+    "last_login": "2019-10-29T00:58:56.985Z",
+    "is_superuser": false,
+    "username": "Evgenii",
+    "first_name": "",
+    "last_name": "",
+    "email": "elipatov@test.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-29T00:58:18.685Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$5QGjLKOqsART$1yZzX/9dUSGZL54jz4EIq845Pdfp008Vz5TTHd7jJVE=",
+    "last_login": "2019-10-29T01:18:34.559Z",
+    "is_superuser": false,
+    "username": "petya",
+    "first_name": "Petya",
+    "last_name": "Vasechkin",
+    "email": "petya@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-29T01:18:09.544Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$3Vdzanle2Eim$GwHT4wf3LcN9bBN+LdWogGFbIKzt/ne6BLTckpRzLpw=",
+    "last_login": "2019-10-29T01:20:35.398Z",
+    "is_superuser": false,
+    "username": "ugene",
+    "first_name": "Evgenii",
+    "last_name": "",
+    "email": "ugene@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-29T01:20:12.080Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$b4UxivZKBNT9$Bw9JNqpUBd5vNCoad9CFroLws7nuJnPZoUW9sYLYwIs=",
+    "last_login": "2019-10-29T01:24:04.546Z",
+    "is_superuser": false,
+    "username": "vasya",
+    "first_name": "Vasya",
+    "last_name": "Petechkin",
+    "email": "vasya@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-29T01:23:39.620Z",
     "groups": [],
     "user_permissions": []
   }
