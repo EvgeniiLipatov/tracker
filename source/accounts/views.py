@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from django.views.generic import UpdateView, DetailView
+from django.views.generic import UpdateView, DetailView, ListView
 
 from accounts.forms import SignUpForm, UserChangeForm, UserChangePasswordForm
 from accounts.models import Token
@@ -106,3 +106,9 @@ class UserChangePasswordView(UserPassesTestMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('accounts:login')
+
+
+class UserListView(ListView):
+    template_name = 'userlist.html'
+    model = User
+    context_object_name = 'user_objs'
