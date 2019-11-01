@@ -48,6 +48,7 @@ def register_view(request):
             user.set_password(form.cleaned_data.get('password'))
             user.save()
 
+
             token = Token.objects.create(user=user)
 
             activation_url = HOST_NAME + reverse('accounts:user_activate', kwargs={'token': token})
