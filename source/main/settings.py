@@ -127,3 +127,10 @@ EMAIL_HOST = 'smtp.mailtrap.io'
 EMAIL_HOST_USER = 'fba1f16fac0095'
 EMAIL_HOST_PASSWORD = '78d83eb4ce44c7'
 EMAIL_PORT = '2525'
+
+LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'webapp:index'
+LOGOUT_REDIRECT_URL = 'webapp:index'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_URL = '/media/'
