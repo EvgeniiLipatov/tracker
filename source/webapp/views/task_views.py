@@ -73,17 +73,18 @@ class TaskForProjectsCreateView(LoginRequiredMixin, CreateView):
         return redirect('webapp:project_view', pk=task.project.pk)
 
 
-class TaskEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class TaskEditView(LoginRequiredMixin, UpdateView):
     form_class = TaskForm
     template_name = "update.html"
     model = Task
     context_object_name = 'task'
 
-    def test_func(self):
-        teams = self.request.user.team.distinct()
-        pk = self.kwargs['pk']
-        task = Task.objects.get(pk=pk)
-        return teams.filter(project=task.project)
+    # def test_func(self):
+    #     # teams = self.request.user.team.distinct()
+    #     # pk = self.kwargs['pk']
+    #     # task = Task.objects.get(pk=pk)
+    #     # return teams.filter(project=task.project)
+    #     pass
 
     def get_success_url(self):
         return reverse('webapp:task_view', kwargs={'pk': self.object.pk})
