@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from urllib.parse import urlparse
 
 from accounts.models import Profile
 
@@ -73,9 +74,19 @@ class UserChangeForm(forms.ModelForm):
             profile.save()
         return profile
 
+    def clean_gitProfile(self):
+        url = self.cleaned_data.get('gitProfile')
+        check_url = urlparse(url)
+        print(check_url.netloc)
+        if url:
+            if check_url.netloc == 'github.com':
+                return url
+            raise ValidationError('It is not a link to github profile', code='invalid_github_url')
+        return None
+
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email']
+        fields = ['first_name', 'last_name', 'email', 'gitProfile', 'about']
         profile_fields = ['avatar', 'birth_date', 'gitProfile', 'about']
 
 
