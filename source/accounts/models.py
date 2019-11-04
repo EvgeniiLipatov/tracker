@@ -27,3 +27,11 @@ class Profile(models.Model):
 
         verbose_name_plural = 'Профили'
 
+class Team(models.Model):
+    project_key = models.ForeignKey('webapp.Project', on_delete=models.PROTECT)
+    user_key = models.ForeignKey(User, on_delete=models.PROTECT)
+    started_at = models.DateField(verbose_name='Start Date')
+    finished_at =  models.DateField(verbose_name='Finish Date')
+
+    def __str__(self):
+        return "team #" + str(self.pk)

@@ -38,11 +38,3 @@ class Project(models.Model):
 
 
 
-class Team(models.Model):
-    project_key = models.ForeignKey('Project', on_delete=models.PROTECT)
-    user_key = models.ForeignKey('auth.User', on_delete=models.PROTECT)
-    started_at = models.DateField(verbose_name='Start Date')
-    finished_at =  models.DateField(verbose_name='Finish Date')
-
-    def __str__(self):
-        return "team #" + str(self.pk)

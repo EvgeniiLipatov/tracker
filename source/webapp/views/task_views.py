@@ -1,9 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.utils.http import urlencode
-from django.views import View
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from webapp.models import Task, Project
 from webapp.forms import TaskForm, ProjectTaskForm, SimpleSearchForm
@@ -73,18 +72,16 @@ class TaskForProjectsCreateView(LoginRequiredMixin, CreateView):
         return redirect('webapp:project_view', pk=task.project.pk)
 
 
-class TaskEditView(LoginRequiredMixin, UpdateView):
+class TaskEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     form_class = TaskForm
     template_name = "update.html"
     model = Task
     context_object_name = 'task'
 
-    # def test_func(self):
-    #     # teams = self.request.user.team.distinct()
-    #     # pk = self.kwargs['pk']
-    #     # task = Task.objects.get(pk=pk)
-    #     # return teams.filter(project=task.project)
-    #     pass
+    def test_func(self):
+        teams = self.request.user.team_set.distinct()
+        task = Task.objects.get(pk=self.kwargs['pk'])
+        return teams.filter(project_key=task.project)
 
     def get_success_url(self):
         return reverse('webapp:task_view', kwargs={'pk': self.object.pk})
