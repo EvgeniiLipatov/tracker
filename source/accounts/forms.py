@@ -50,6 +50,8 @@ class UserChangeForm(forms.ModelForm):
 
     avatar = forms.ImageField(label='Аватар', required=False)
     birth_date = forms.DateField(label='День рождения', input_formats=['%Y-%m-%d', '%d.%m.%Y'], required=False)
+    gitProfile = forms.URLField(label='git profile', required=False)
+    about = forms.CharField(label='about', required=False, widget=forms.Textarea)
 
     def get_initial_for_field(self, field, field_name):
         if field_name in self.Meta.profile_fields:
@@ -74,7 +76,7 @@ class UserChangeForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email']
-        profile_fields = ['avatar', 'birth_date']
+        profile_fields = ['avatar', 'birth_date', 'gitProfile', 'about']
 
 
 class UserChangePasswordForm(forms.ModelForm):

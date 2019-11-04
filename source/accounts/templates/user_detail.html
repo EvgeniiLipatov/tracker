@@ -15,4 +15,7 @@
     <p>Last Name: {{ user_obj.last_name }}</p>
     <p>Email: {{ user_obj.email }}</p>
     <p>Birth Date: {{ user_obj.profile.birth_date|date:"d:m:Y" }}</p>
+    {% if user_obj.profile.gitProfile %}
+        <p>{{ user_obj.profile.gitProfile }}</p>
+    {% endif %}
 {% endblock %}

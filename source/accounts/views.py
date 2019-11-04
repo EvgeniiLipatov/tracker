@@ -81,6 +81,7 @@ class UserDetailView(DetailView):
     template_name = 'user_detail.html'
     context_object_name = 'user_obj'
 
+
 class UserChangeView(UserPassesTestMixin, UpdateView):
     model = User
     template_name = 'user_update.html'
@@ -102,7 +103,6 @@ class UserChangePasswordView(UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         return self.get_object() == self.request.user
-
 
     def get_success_url(self):
         return reverse('accounts:login')
