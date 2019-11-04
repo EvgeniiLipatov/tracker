@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.views.generic import UpdateView, DetailView, ListView
 
 from accounts.forms import SignUpForm, UserChangeForm, UserChangePasswordForm
-from accounts.models import Token
+from accounts.models import Token, Profile
 from main.settings import HOST_NAME
 
 
@@ -49,8 +49,7 @@ def register_view(request):
             )
             user.set_password(form.cleaned_data.get('password'))
             user.save()
-
-
+            Profile.objects.create(user=user)
             token = Token.objects.create(user=user)
 
             activation_url = HOST_NAME + reverse('accounts:user_activate', kwargs={'token': token})
