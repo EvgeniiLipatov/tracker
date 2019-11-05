@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
+from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.utils.http import urlencode
@@ -52,16 +53,33 @@ class TaskView(BaseView):
     context_key = 'task'
 
 
-class TaskCreateView(LoginRequiredMixin, CreateView):
+class TaskCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     template_name = "create.html"
     model = Task
     form_class = TaskForm
 
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        allowed_projects = Project.objects.filter(team__user_key=self.request.user)
+        if form.is_valid():
+            project = form.cleaned_data['project']
+            for proj in allowed_projects:
+                if proj.pk == project.pk:
+                    return self.form_valid(form)
+            else:
+                return HttpResponseForbidden("You don't have permisions to create task in project {}".format(project.project_name))
+        else:
+            return self.form_invalid(form)
+
     def get_success_url(self):
         return reverse('webapp:task_view', kwargs={'pk': self.object.pk})
 
+    def test_func(self):
+        return True
 
-class TaskForProjectsCreateView(LoginRequiredMixin, CreateView):
+
+
+class TaskForProjectsCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Task
     template_name = 'create.html'
     form_class = ProjectTaskForm
@@ -70,6 +88,11 @@ class TaskForProjectsCreateView(LoginRequiredMixin, CreateView):
         project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
         task = project.tasks.create(**form.cleaned_data)
         return redirect('webapp:project_view', pk=task.project.pk)
+
+    def test_func(self):
+        teams = self.request.user.team_set.distinct()
+        task = Task.objects.get(pk=self.kwargs['pk'])
+        return teams.filter(project_key=task.project)
 
 
 class TaskEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -87,7 +110,7 @@ class TaskEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return reverse('webapp:task_view', kwargs={'pk': self.object.pk})
 
 
-class TaskDeleteView(LoginRequiredMixin, DeleteView):
+class TaskDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     template_name = 'delete.html'
     model = Task
     context_object_name = 'task'
@@ -97,3 +120,8 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
 
     def get_success_url(self):
         return reverse('webapp:index')
+
+    def test_func(self):
+        teams = self.request.user.team_set.distinct()
+        task = Task.objects.get(pk=self.kwargs['pk'])
+        return teams.filter(project_key=task.project)
