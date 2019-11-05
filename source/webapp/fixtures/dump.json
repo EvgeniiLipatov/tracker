@@ -1,19 +1,6 @@
 [
 {
   "model": "webapp.task",
-  "pk": 2,
-  "fields": {
-    "brief": "Update task",
-    "description": "Add update option for task",
-    "status": 3,
-    "type": 1,
-    "project": 1,
-    "created_at": "2019-09-27T07:52:33.016Z",
-    "updated_at": "2019-10-16T13:36:02.928Z"
-  }
-},
-{
-  "model": "webapp.task",
   "pk": 3,
   "fields": {
     "brief": "edit button on main page",
@@ -40,15 +27,15 @@
 },
 {
   "model": "webapp.task",
-  "pk": 5,
+  "pk": 6,
   "fields": {
-    "brief": "Fix view of task",
-    "description": "Delete ability to view paused tasks",
-    "status": 1,
-    "type": 2,
-    "project": 1,
-    "created_at": "2019-09-27T07:55:10.735Z",
-    "updated_at": "2019-10-16T13:28:15.007Z"
+    "brief": "Unit tests for Tetris",
+    "description": "test",
+    "status": 2,
+    "type": 1,
+    "project": 2,
+    "created_at": "2019-11-05T12:15:49.781Z",
+    "updated_at": "2019-11-05T12:15:49.781Z"
   }
 },
 {
@@ -128,11 +115,21 @@
   }
 },
 {
+  "model": "webapp.project",
+  "pk": 3,
+  "fields": {
+    "project_name": "TestProject",
+    "description": "just to test",
+    "created_at": "2019-11-05T12:39:28.734Z",
+    "updated_at": "2019-11-05T12:39:28.734Z"
+  }
+},
+{
   "model": "auth.user",
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$150000$vSKe9i2vsCIn$56swyexgB+EfhjfanSKwc5EQgbRRFaGnBpRcjSrCkoQ=",
-    "last_login": "2019-11-04T10:55:34.347Z",
+    "last_login": "2019-11-05T12:16:46.100Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "Evgeniy",
@@ -150,7 +147,7 @@
   "pk": 2,
   "fields": {
     "password": "pbkdf2_sha256$150000$5TRSOCBwtW1a$wWpG65ue1akyJ9bfqn5GG4Ry4nuqgTkdpgUWA8WRjdA=",
-    "last_login": "2019-10-30T14:12:52.909Z",
+    "last_login": "2019-11-04T14:56:28.916Z",
     "is_superuser": false,
     "username": "petya",
     "first_name": "Petya",
