@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.utils.http import urlencode
@@ -70,6 +70,12 @@ class TaskCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
                 return HttpResponseForbidden("You don't have permisions to create task in project {}".format(project.project_name))
         else:
             return self.form_invalid(form)
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.author = self.request.user
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
 
     def get_success_url(self):
         return reverse('webapp:task_view', kwargs={'pk': self.object.pk})
