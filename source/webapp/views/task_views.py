@@ -58,6 +58,7 @@ class TaskCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Task
     form_class = TaskForm
 
+
     def post(self, request, *args, **kwargs):
         form = self.get_form()
         allowed_projects = Project.objects.filter(team__user_key=self.request.user)
@@ -90,15 +91,28 @@ class TaskForProjectsCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateV
     template_name = 'create.html'
     form_class = ProjectTaskForm
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['project'] = self.get_project()
+        return kwargs
+
     def form_valid(self, form):
         project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
         task = project.tasks.create(**form.cleaned_data)
         return redirect('webapp:project_view', pk=task.project.pk)
 
+    def get_project(self):
+        project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
+        return project
+
     def test_func(self):
         teams = self.request.user.team_set.distinct()
-        task = Task.objects.get(pk=self.kwargs['pk'])
-        return teams.filter(project_key=task.project)
+        # task = Task.objects.get(pk=self.kwargs['pk'])
+        project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
+ #       task = Task.objects.get(pk=project.pk)
+#        task = Task.objects.filter(project__pk=self.kwargs['pk'])
+#        print(task)
+        return teams.filter(project_key=project.pk)
 
 
 class TaskEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
