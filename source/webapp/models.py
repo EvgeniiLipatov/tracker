@@ -42,6 +42,7 @@ class Project(models.Model):
     description = models.TextField(max_length=3000, null=True, blank=True, verbose_name='Description')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creation Time')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Updating time')
+    task=models.ForeignKey('webapp.Task', on_delete=models.PROTECT, related_name='projects', verbose_name='Tasks', null=True, blank=True)
 
     def __str__(self):
         return self.project_name
