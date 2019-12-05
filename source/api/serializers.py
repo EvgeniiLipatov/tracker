@@ -13,9 +13,9 @@ class TaskSerializer(serializers.ModelSerializer):
 class ProjectSerializer(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(read_only=True)
     updated_at = serializers.DateTimeField(read_only=True)
-    task = TaskSerializer(many=True, read_only=True)
+    tasks = TaskSerializer(many=True, read_only=True)
     class Meta:
         model = Project
-        fields = ('id', 'project_name', 'description', 'created_at', 'updated_at','task')
+        fields = ('id', 'project_name', 'description', 'created_at', 'updated_at','tasks')
 
 
