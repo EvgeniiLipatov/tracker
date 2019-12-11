@@ -6,13 +6,13 @@ from webapp.models import Task, Project
 
 
 class TaskViewSet(viewsets.ModelViewSet):
-    #permission_classes = [DjangoModelPermissions]
+    permission_classes = [DjangoModelPermissions]
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
 
 
 class ProjectViewSet(viewsets.ModelViewSet):
-   # permission_classes = [DjangoModelPermissions]
+    permission_classes = [DjangoModelPermissions]
     serializer_class = ProjectSerializer
     queryset = Project.objects.all()
 
